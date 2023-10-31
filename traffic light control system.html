@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .traffic-light {
+            width: 50px;
+            height: 150px;
+            border: 1px solid #000;
+            background: #333;
+            border-radius: 10px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .light {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #000;
+            background: #111;
+            border-radius: 50%;
+            margin: 5px;
+        }
+
+        #red {
+            background: #f00;
+        }
+
+        #yellow {
+            background: #ff0;
+        }
+
+        #green {
+            background: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div class="light" id="red"></div>
+        <div class="light" id="yellow"></div>
+        <div class="light" id="green"></div>
+    </div>
+    
+    <button onclick="changeLights()">Change Lights</button>
+    
+    <script>
+        var currentLight = 1;
+
+        function changeLights() {
+            var lights = document.querySelectorAll('.light');
+            lights[currentLight - 1].style.background = '#111'; // Turn off the current light
+            currentLight = (currentLight % 3) + 1; // Cycle through 1, 2, 3
+            lights[currentLight - 1].style.background = lightsColors[currentLight - 1]; // Turn on the next light
+        }
+
+        var lightsColors = ["#f00", "#ff0", "#0f0"];
+    </script>
+</body>
+</html>
